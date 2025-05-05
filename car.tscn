@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0cxr4m0gppqq"]
+
+[ext_resource type="PackedScene" uid="uid://cnw27o5d07bki" path="res://assets/cars/2018-bmw-m5/source/2018_bmw_m5.glb" id="1_7822p"]
+[ext_resource type="Script" uid="uid://dl060myeiqe1d" path="res://car.gd" id="1_uoj53"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uoj53"]
+size = Vector3(1.5, 0.898438, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k61xc"]
+
+[node name="Car" type="VehicleBody3D"]
+mass = 250.0
+script = ExtResource("1_uoj53")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_7822p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0199215, 0, -0.0105214)
+
+[node name="FrontLeftWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.5)
+use_as_traction = true
+use_as_steering = true
+wheel_radius = 0.4
+damping_compression = 1.9
+damping_relaxation = 2.0
+
+[node name="FrontRightWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1.5)
+use_as_traction = true
+use_as_steering = true
+
+[node name="RearLeftWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1.5)
+use_as_traction = true
+
+[node name="RearRightWheel" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.5)
+use_as_traction = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3875, 1.50225, 2.43755)
+shape = SubResource("BoxShape3D_uoj53")
+
+[node name="CarMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = SubResource("BoxMesh_k61xc")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -2.55599e-08, 8.36028e-08, 0, 0.956305, 0.292372, -8.74228e-08, 0.292372, -0.956305, 0, 4.91, -7.787)
+current = true

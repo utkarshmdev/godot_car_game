@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://s3x0rnabawlg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwb40"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_80nbo"]
+material = SubResource("StandardMaterial3D_mwb40")
+custom_aabb = AABB(0, 0, 6, 0, 0, 0)
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_e2o6t"]
+size = Vector3(1.5, 0.5, 3)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_feb5d"]
+points = PackedVector3Array(-0.77381, 0.297507, -1.52351, 0.73229, -0.25, 1.39684, -0.77381, 0.297507, 1.52351, 0.797465, 0.297619, -1.52351, -0.708481, -0.25, -1.39684, 0.73229, -0.25, -1.39684, -0.708481, -0.25, 1.39684, 0.797465, 0.297619, 1.52351)
+
+[node name="game" type="Node3D"]
+
+[node name="ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.224782, -0.743307, 0.0640782)
+mesh = SubResource("BoxMesh_80nbo")
+
+[node name="Car" type="VehicleBody3D" parent="."]
+
+[node name="car_body" type="MeshInstance3D" parent="Car"]
+mesh = SubResource("BoxMesh_e2o6t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Car"]
+shape = SubResource("ConvexPolygonShape3D_feb5d")

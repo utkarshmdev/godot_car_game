@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://diegrpxm0endx"]
+
+[ext_resource type="Script" uid="uid://cxxtej0gtw10q" path="res://track.gd" id="1_bcvet"]
+[ext_resource type="Script" uid="uid://wdv3q0pm10dd" path="res://directional_light_3d.gd" id="2_8nfsw"]
+[ext_resource type="Script" uid="uid://bfcd16tnpaigq" path="res://tree.gd" id="3_vr403"]
+
+[sub_resource type="Environment" id="Environment_ucvjy"]
+background_mode = 2
+ssao_enabled = true
+fog_enabled = true
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_bcvet")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.758954, 0.603659, -0.244099, -0.485499, 0.774428, 0.40565, 0.433911, -0.18936, 0.880831, 0, 0, 0)
+shadow_enabled = true
+script = ExtResource("2_8nfsw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ucvjy")
+
+[node name="Tree" type="Tree" parent="."]
+offset_right = 16.0
+offset_bottom = 17.0
+script = ExtResource("3_vr403")
